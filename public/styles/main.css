@@ -1,0 +1,45 @@
+body {
+	font-family: sans-serif;
+	background-image: url(http://i.imgur.com/V35BBN0.png);
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.center {
+	width: 500px;
+	margin: 40px auto;
+	padding: 30px;
+	background-color: snow;
+}
+
+p, .grey-font {
+	color: grey;
+}
+
+a, .blog-title {
+	text-decoration: none;
+	color: #70380f;
+}
+
+.header {
+	font-family: 'Henny Penny', cursive;
+	font-size: 2.5em;
+	color: #70380f;
+	text-align: center;
+	margin: 0 auto;
+	padding: 40px;
+}
+
+div.body {
+	text-align: center;
+	width: 400px;
+	margin: 0 auto;
+	padding: 20px;
+	background: rgba(255, 255,255,0.9);
+	border-radius: 10px;
+}
+
+.date {
+	font-size: .8em;
+	color: #556B2F
+}

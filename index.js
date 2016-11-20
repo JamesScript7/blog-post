@@ -36,22 +36,11 @@ app.post('/blogposts', function(req,res) {
 		date: newDate
 	}
 
-
 	blogPosts.push(newPost);
 	
-
 	console.log(blogPosts);
 	res.render('blog-form', { blug: blogPosts });
 })
-
-
-
-
-
-
-
-
-
 
 app.listen(port, function() {
 	console.log("ExpressJS started on port: " + port);

@@ -42,6 +42,12 @@ app.post('/blogposts', function(req,res) {
 	res.render('blog-form', { blug: blogPosts });
 })
 
-app.listen(port, function() {
-	console.log("ExpressJS started on port: " + port);
-})
+app.set('port', (process.env.PORT || 5000));
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
+
+// app.listen(port, function() {
+// 	console.log("ExpressJS started on port: " + port);
+// })

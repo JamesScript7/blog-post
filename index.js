@@ -4,7 +4,7 @@ var port = 3000;
 var bodyParser = require('body-parser');
 
 
-// Sequelizin
+// Sequelizing
 var Sequelize = require('sequelize');
 var databaseURL = 'sqlite://dev.sqlite3';
 var sequelize = new Sequelize(databaseURL);
@@ -22,18 +22,17 @@ app.get('/', function(req,res) {
 var blogPosts = sequelize.define('blogPost', {
 	title: {
 		type: Sequelize.STRING,
-		allowNull: false,
-		unique: true
+		allowNull: false
 	},
 	comments: {
 		type: Sequelize.STRING,
-		allowNull: false,
-		unique: true
+		allowNull: false
 	},
 
 	timestamp: {
 		type: Sequelize.DATE,
-		allowNull: false
+		allowNull: false,
+		unique: true
 	}
 });
 
@@ -52,9 +51,10 @@ app.get('/blog', function(req,res) {
 })
 
 app.get('/blog/all', function(req,res) {
-	res.json(blogPosts);
-})
-
+	blogPosts.findAll().then(function(blogs) {
+		res.render("blog-form", {blug: blogs})
+	});
+});
 
 
 
@@ -62,17 +62,26 @@ app.get('/blog/all', function(req,res) {
 app.post('/blogposts', function(req,res) {
 	var posts = {
 		newTitle: req.body.title,
-		newComments: req.body.comments,
-		newDate: new Date()
+		newComments: req.body.comments
 	}
 	
 	blogPosts.create({
 		title: posts.newTitle,
 		comments: posts.newComments,
-		timestamp: posts.newDate
+		timestamp: new Date()
+	}).then(function() {
+		console.log(this.dataValues)
+		// res.json(this);
 	});
 
-	
-	console.log(blogPosts);
-	res.render('blog-form', { blug: blogPosts });
-})
+	res.redirect('/blog/all');
+});
+
+
+
+
+
+
+
+
+

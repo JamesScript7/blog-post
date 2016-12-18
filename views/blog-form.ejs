@@ -1,24 +1,23 @@
-<link rel="stylesheet" type="text/css" href="/styles/main.css">
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Fox Trot
+	</title>
 
-<link href="https://fonts.googleapis.com/css?family=Henny+Penny" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/styles/main.css">
+
+	<link href="https://fonts.googleapis.com/css?family=Henny+Penny" rel="stylesheet">
+</head>
+<body>
 
 <div class="center">
 
 <h1 class="header"><a href="/">Fox Trots</a></h1>
 
-<% if ( blug !== undefined ) { %>
-	<% for (var i=0; i < blug.length; i++) { %>
-	<h2 class="blog-title"> <%= blug[i].title %> </h2>
-	<p class="date"> Written: <%= blug[i].date %> </p>
-	<p> <%= blug[i].comments %> </p>
-	<hr>
-<% } %>
-
-<% } %>
-
 <h3 class="grey-font">Trot down your Ideas:</h3>
 
-<form action="/blogposts" method="POST">
+<form id="blog-posts" action="/blogposts" method="POST">
 	<p>Title</p>
 	<input id="title" type="text" name="title" />
 
@@ -29,4 +28,22 @@
 
 </form>
 
+<% if ( blug !== undefined ) { %>
+	<%console.log("BLOG NUMBA!" + blug.length)%>
+	<% for (var i = (blug.length - 1); i > 0; i--) { %>
+	<h2 class="blog-title"> <%= blug[i].title %> </h2>
+	<p class="date"> Written: <%= blug[i].timestamp %> </p>
+	<p> <%= blug[i].comments %> </p>
+	<hr>
+<% } %>
+
+<% } %>
+
+
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../main.js"></script>
+
+</body>
+</html>

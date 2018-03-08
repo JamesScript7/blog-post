@@ -7,13 +7,12 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//global var
+var blogPosts = [];
+
 app.get('/', function(req,res) {
 	res.render('blog-form', { blug: blogPosts });
 })
-
-
-//global var
-var blogPosts = [];
 
 //create
 app.get('/blog', function(req,res) {
@@ -29,7 +28,7 @@ app.post('/blogposts', function(req,res) {
 	var newTitle = req.body.title;
 	var newComments = req.body.comments;
 	var newDate = new Date();
-	
+
 	var newPost = {
 		title: newTitle,
 		comments: newComments,
@@ -37,8 +36,8 @@ app.post('/blogposts', function(req,res) {
 	}
 
 	blogPosts.push(newPost);
-	
-	console.log(blogPosts);
+
+	// console.log(blogPosts);
 	res.render('blog-form', { blug: blogPosts });
 })
 

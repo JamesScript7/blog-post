@@ -25,11 +25,31 @@ app.get('/', function(req,res) {
 });
 
 app.get('/blog', function(req,res) {
-	res.render('blog-form');
+	models.posts.findAll().then(function(posts) {
+		var arr = [];
+
+		posts.forEach(function(item) {
+			arr.push(item.dataValues);
+		});
+
+		arr.reverse();
+
+		res.render('blog-form', { blug: arr });
+	});
 });
 
 app.get('/blog/all', function(req,res) {
-	// res.json(blogPosts);
+	models.posts.findAll().then(function(posts) {
+		var arr = [];
+
+		posts.forEach(function(item) {
+			arr.push(item.dataValues);
+		});
+
+		arr.reverse();
+
+		res.render('blogposts', { blug: arr });
+	});
 });
 
 // send ejs to server with data
@@ -52,9 +72,7 @@ app.post('/blogposts', function(req,res) {
 			}
 		);
 
-		console.log(blug);
-
-		// res.render('blog-form', {blug: blug});
+		res.redirect('/blog');
 	});
 
 });

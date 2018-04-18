@@ -1,6 +1,8 @@
 <link rel="stylesheet" type="text/css" href="/styles/main.css">
 
-<% for (var i=0; i < blug.length; i++) { %>
-	<h2> <%= blug[i].title %> </h2>
-	<p> <%= blug[i].comments %> </p>
+<% for (var i = 0; i < blug.length; i++) { %>
+	<div>
+		<h2> <%= blug[i].title %> </h2>
+		<p> <%= blug[i].body %> </p>
+	</div>
 <% } %>

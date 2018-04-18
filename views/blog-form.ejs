@@ -6,15 +6,15 @@
 
 <h1 class="header"><a href="/">Fox Trots</a></h1>
 
-<%/* if ( blug !== undefined ) { %>
+<% if ( blug !== undefined ) { %>
 	<% for (var i=0; i < blug.length; i++) { %>
 	<h2 class="blog-title"> <%= blug[i].title %> </h2>
-	<p class="date"> Written: <%= blug[i].date %> </p>
-	<p> <%= blug[i].comments %> </p>
+	<p class="date"> Written: <%= blug[i].createdAt %> </p>
+	<p class="date"><%= blug[i].body %></p>
 	<hr>
 <% } %>
 
-<% } */%>
+<% } %>
 
 <h3 class="grey-font">Trot down your Ideas:</h3>
 
